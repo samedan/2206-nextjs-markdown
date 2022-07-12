@@ -1,3 +1,11 @@
+## Original Git
+
+https://github.com/bradtraversy/devspace-blog
+
+## My git
+
+https://github.com/samedan/2206-nextjs-markdown
+
 ## Tailwind
 
 https://tailwindcss.com/docs/guides/nextjs
