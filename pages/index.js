@@ -1,10 +1,7 @@
 import Layout from "@/components/Layout";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
 import Post from "@/components/Post";
-import { sortByDate } from "@/utils/index";
+import { getPosts } from "@/lib/posts";
 
 export default function Home({ posts }) {
   return (
@@ -25,24 +22,9 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const files = fs.readdirSync(path.join("posts"));
-  const posts = files.map((filename) => {
-    const slug = filename.replace(".md", "");
-    const markdowWithMeta = fs.readFileSync(
-      path.join("posts", filename),
-      "utf-8"
-    );
-    // extracts META from the MD files
-    const { data: frontmatter } = matter(markdowWithMeta);
-    return {
-      slug,
-      frontmatter,
-    };
-  });
-  // console.log(posts);
   return {
     props: {
-      posts: posts.sort(sortByDate).slice(0, 6),
+      posts: getPosts().slice(0, 6),
     },
   };
 }
