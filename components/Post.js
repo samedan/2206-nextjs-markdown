@@ -23,6 +23,14 @@ export default function Post({ post }) {
           width="600"
           className="mb-4 rounded"
         />
+        {/* <img
+          // loader={myLoader}
+          src={`${post.frontmatter.cover_image}`}
+          alt="image"
+          height="420"
+          width="600"
+          className="mb-4 rounded"
+        /> */}
         <div className="flex justify-between items-center">
           <span className="font-light text-gray-600">
             {post.frontmatter.date}
@@ -46,7 +54,7 @@ export default function Post({ post }) {
           <div className="flex items-center">
             <img
               src={post.frontmatter.author_image}
-              alt="Auhtor"
+              alt="Author"
               className="mx-4 w-10 object-cover rounded-full hidden sm:block"
             />
             <h3 className="text-gray-700 font-bold">
