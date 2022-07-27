@@ -13,6 +13,7 @@ export default function Search() {
       } else {
         const res = await fetch(`/api/search?q=${searchTerm}`);
         const results = await res.json();
+        console.log(results);
         setSearchResults(results);
       }
     };
@@ -38,7 +39,7 @@ export default function Search() {
           </form>
         </div>
       </div>
-      <SearchResults results={searchResults} />
+      <SearchResults results={searchResults} slug={slug} />
     </div>
   );
 }
