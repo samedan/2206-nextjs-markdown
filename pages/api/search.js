@@ -8,7 +8,8 @@ export default function handler(req, res) {
   let posts;
 
   if (process.env.NODE_ENV === "production") {
-    // fetch from cache
+    // fetch from cache file made with /scripts/cache.js
+    posts = require("../../cache/data").posts;
   } else {
     const files = fs.readdirSync(path.join("posts"));
     posts = files.map((filename) => {
@@ -30,7 +31,7 @@ export default function handler(req, res) {
   }
 
   const results = posts.filter(
-    ({ frontmatter: { title, excerpt, category }, slug }) =>
+    ({ frontmatter: { title, excerpt, category } }) =>
       // check each search term 'q' if it matches (-1)
       title.toLowerCase().indexOf(req.query.q) != -1 ||
       excerpt.toLowerCase().indexOf(req.query.q) != -1 ||

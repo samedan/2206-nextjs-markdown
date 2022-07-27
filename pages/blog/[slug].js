@@ -70,15 +70,6 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-// paths coming from getStaticPaths [
-//   { params: { slug: 'django-crash-course' } },
-//   { params: { slug: 'javascript-performance-tips' } },
-//   { params: { slug: 'new-in-php-8' } },
-//   { params: { slug: 'python-book-review' } },
-//   { params: { slug: 'react-crash-course' } },
-//   { params: { slug: 'tailwind-vs-bootstrap' } },
-//   { params: { slug: 'writing-great-unit-tests' } }
-// ]
 
 export async function getStaticProps({ params: { slug } }) {
   const markdownWithMeta = fs.readFileSync(
