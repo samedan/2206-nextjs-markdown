@@ -17,16 +17,20 @@ export default function handler(req, res) {
         path.join("posts", filename),
         "utf-8"
       );
+      const slug = filename.replace(".md", "");
+      // console.log(markdownWithMeta);
+      console.log(slug);
       const { data: frontmatter } = matter(markdownWithMeta);
 
       return {
         frontmatter,
+        slug,
       };
     });
   }
 
   const results = posts.filter(
-    ({ frontmatter: { title, excerpt, category } }) =>
+    ({ frontmatter: { title, excerpt, category }, slug }) =>
       // check each search term 'q' if it matches (-1)
       title.toLowerCase().indexOf(req.query.q) != -1 ||
       excerpt.toLowerCase().indexOf(req.query.q) != -1 ||

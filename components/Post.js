@@ -3,14 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import CategoryLabel from "./CategoryLabel";
 
+const myLoader = ({ src }) => {
+  // return `${post.frontmatter.cover_image}`;
+  return src;
+};
+
 export default function Post({ post, compact }) {
   // console.log(post);
   // const API = "https://localhost:3000";
-  const myLoader = ({ src }) => {
-    return `${post.frontmatter.cover_image}`;
-  };
+
   // console.log(post.frontmatter.cover_image);
   // const url = `${post.frontmatter.cover_image}`;
+
   if (post) {
     return (
       <div className="w-full px-10 py-6 bg-white rounded-lg shadow-md mt-6">
@@ -23,6 +27,7 @@ export default function Post({ post, compact }) {
             height="420"
             width="600"
             className="mb-4 rounded"
+            unoptimized
           />
         )}
 
@@ -56,7 +61,7 @@ export default function Post({ post, compact }) {
               <a className="text-gray-900 hover:text-blue-600">Read more</a>
             </Link>
             <div className="flex items-center">
-              <Image
+              <img
                 src={post.frontmatter.author_image}
                 alt="Author"
                 className="mx-4 w-10 object-cover rounded-full hidden sm:block"

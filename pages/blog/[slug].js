@@ -8,6 +8,10 @@ import Layout from "@/components/Layout";
 import CategoryLabel from "@/components/CategoryLabel";
 import Image from "next/image";
 
+const myLoader = ({ src }) => {
+  return src;
+};
+
 export default function PostPage({
   frontmatter: { title, category, date, cover_image, author, author_image },
   content,
@@ -15,19 +19,29 @@ export default function PostPage({
 }) {
   return (
     <Layout title={title}>
+      Slug: {slug}
       <Link href="/blog">Go back</Link>
       <div className="w-full px-10 py-6 bg-white rounded-lg shadow-md mt-6">
         <div className="flex justify-between items-center mt-4">
           <h1 className="text-5xl mb-7">{title}</h1>
           <CategoryLabel>{category}</CategoryLabel>
         </div>
-        <Image src={cover_image} alt="" className="w-full rounded" />
+        <Image
+          loader={myLoader}
+          src={cover_image}
+          alt=""
+          className="w-full rounded"
+          // layout="fill"
+          width={"100%"}
+          height={"100%"}
+        />
         <div className="flex justify-between intems-center bg-gray-100 p-2 my-8">
           <div className="flex items-center">
-            <Image
+            <img
               src={author_image}
               className="mx-4 w-10 object-cover rounded-full hidden sm:block"
               alt=""
+              layout="fill"
             />
             <h4>{author}</h4>
           </div>
