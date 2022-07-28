@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build & next export",
+    "build2": "next build & next export",
+    "build": "next build",
     "cache-posts": "node scripts/cache.js",
     "prepare": "husky install",
     "start": "next start",
